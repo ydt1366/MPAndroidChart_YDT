@@ -149,70 +149,70 @@ public class BarChartActivitySinus extends DemoBase implements OnSeekBarChangeLi
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.viewGithub: {
+
+             if(item.getItemId()==R.id.viewGithub) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse("https://github.com/PhilJay/MPAndroidChart/blob/master/MPChartExample/src/com/xxmassdeveloper/mpchartexample/BarChartActivitySinus.java"));
                 startActivity(i);
-                break;
+
             }
-            case R.id.actionToggleValues: {
+            else if(item.getItemId()==R.id.actionToggleValues) {
                 for (IBarDataSet set : chart.getData().getDataSets())
                     set.setDrawValues(!set.isDrawValuesEnabled());
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleHighlight: {
+            else if(item.getItemId()==R.id.actionToggleHighlight) {
                 if (chart.getData() != null) {
                     chart.getData().setHighlightEnabled(!chart.getData().isHighlightEnabled());
                     chart.invalidate();
                 }
-                break;
+
             }
-            case R.id.actionTogglePinch: {
+            else if(item.getItemId()==R.id.actionTogglePinch) {
                 if (chart.isPinchZoomEnabled())
                     chart.setPinchZoom(false);
                 else
                     chart.setPinchZoom(true);
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleAutoScaleMinMax: {
+            else if(item.getItemId()==R.id.actionToggleAutoScaleMinMax) {
                 chart.setAutoScaleMinMaxEnabled(!chart.isAutoScaleMinMaxEnabled());
                 chart.notifyDataSetChanged();
-                break;
+
             }
-            case R.id.actionToggleBarBorders: {
+            else if(item.getItemId()==R.id.actionToggleBarBorders) {
                 for (IBarDataSet set : chart.getData().getDataSets())
                     ((BarDataSet) set).setBarBorderWidth(set.getBarBorderWidth() == 1.f ? 0.f : 1.f);
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.animateX: {
+            else if(item.getItemId()==R.id.animateX) {
                 chart.animateX(2000);
-                break;
+
             }
-            case R.id.animateY: {
+            else if(item.getItemId()==R.id.animateY) {
                 chart.animateY(2000);
-                break;
+
             }
-            case R.id.animateXY: {
+            else if(item.getItemId()==R.id.animateXY) {
 
                 chart.animateXY(2000, 2000);
-                break;
+
             }
-            case R.id.actionSave: {
+            else if(item.getItemId()==R.id.actionSave) {
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     saveToGallery();
                 } else {
                     requestStoragePermission(chart);
                 }
-                break;
+
             }
-        }
+
         return true;
     }
 

@@ -159,36 +159,35 @@ public class RadarChartActivity extends DemoBase {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.viewGithub: {
+    if(item.getItemId()==R.id.viewGithub){
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse("https://github.com/PhilJay/MPAndroidChart/blob/master/MPChartExample/src/com/xxmassdeveloper/mpchartexample/RadarChartActivity.java"));
                 startActivity(i);
-                break;
+
             }
-            case R.id.actionToggleValues: {
+            else if(item.getItemId()==R.id.actionToggleValues){
                 for (IDataSet<?> set : chart.getData().getDataSets())
                     set.setDrawValues(!set.isDrawValuesEnabled());
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleHighlight: {
+            else if(item.getItemId()==R.id.actionToggleHighlight){
                 if (chart.getData() != null) {
                     chart.getData().setHighlightEnabled(!chart.getData().isHighlightEnabled());
                     chart.invalidate();
                 }
-                break;
+
             }
-            case R.id.actionToggleRotate: {
+            else if(item.getItemId()==R.id.actionToggleRotate){
                 if (chart.isRotationEnabled())
                     chart.setRotationEnabled(false);
                 else
                     chart.setRotationEnabled(true);
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleFilled: {
+            else if(item.getItemId()==R.id.actionToggleFilled){
 
                 ArrayList<IRadarDataSet> sets = (ArrayList<IRadarDataSet>) chart.getData()
                         .getDataSets();
@@ -200,9 +199,9 @@ public class RadarChartActivity extends DemoBase {
                         set.setDrawFilled(true);
                 }
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleHighlightCircle: {
+            else if(item.getItemId()==R.id.actionToggleHighlightCircle){
 
                 ArrayList<IRadarDataSet> sets = (ArrayList<IRadarDataSet>) chart.getData()
                         .getDataSets();
@@ -211,45 +210,45 @@ public class RadarChartActivity extends DemoBase {
                     set.setDrawHighlightCircleEnabled(!set.isDrawHighlightCircleEnabled());
                 }
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleXLabels: {
+            else if(item.getItemId()==R.id.actionToggleXLabels){
                 chart.getXAxis().setEnabled(!chart.getXAxis().isEnabled());
                 chart.notifyDataSetChanged();
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleYLabels: {
+            else if(item.getItemId()==R.id.actionToggleYLabels){
 
                 chart.getYAxis().setEnabled(!chart.getYAxis().isEnabled());
                 chart.invalidate();
-                break;
+
             }
-            case R.id.animateX: {
+            else if(item.getItemId()==R.id.animateX){
                 chart.animateX(1400);
-                break;
+
             }
-            case R.id.animateY: {
+            else if(item.getItemId()==R.id.animateY){
                 chart.animateY(1400);
-                break;
+
             }
-            case R.id.animateXY: {
+            else if(item.getItemId()==R.id.animateXY){
                 chart.animateXY(1400, 1400);
-                break;
+
             }
-            case R.id.actionToggleSpin: {
+            else if(item.getItemId()==R.id.actionToggleSpin){
                 chart.spin(2000, chart.getRotationAngle(), chart.getRotationAngle() + 360, Easing.EaseInOutCubic);
-                break;
+
             }
-            case R.id.actionSave: {
+            else if(item.getItemId()==R.id.actionSave){
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     saveToGallery();
                 } else {
                     requestStoragePermission(chart);
                 }
-                break;
+
             }
-        }
+
         return true;
     }
 

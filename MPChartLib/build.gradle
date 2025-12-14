@@ -3,13 +3,11 @@ apply plugin: 'com.android.library'
 group='com.github.philjay'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    namespace="com.github.mikephil.charting"
+    compileSdkVersion 36
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 28
-        versionCode 3
-        versionName '3.1.0'
+        targetSdkVersion 36
     }
     buildTypes {
         release {
@@ -23,28 +21,34 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.0.0'
-    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.annotation:annotation:1.9.1'
+    testImplementation 'junit:junit:4.13.2'
 }
 
-task sourcesJar(type: Jar) {
+tasks.register('sourcesJar', Jar) {
     from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
+    archiveClassifier.set('sources')
 }
 
-task javadoc(type: Javadoc) {
+tasks.register('javadoc', Javadoc) {
     options.charSet = 'UTF-8'
-    failOnError  false
+    failOnError false
     source = android.sourceSets.main.java.sourceFiles
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+tasks.register('javadocJar', Jar) {
+    dependsOn javadoc
+    archiveClassifier.set('javadoc')
     from javadoc.destinationDir
 }
 
 artifacts {
     archives sourcesJar
     archives javadocJar
+}
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }

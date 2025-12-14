@@ -99,8 +99,8 @@ public class DrawChartActivity extends DemoBase implements OnChartValueSelectedL
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.actionToggleValues: {
+
+             if(item.getItemId()==R.id.actionToggleValues){
                 List<ILineDataSet> sets = chart.getData()
                         .getDataSets();
 
@@ -111,38 +111,38 @@ public class DrawChartActivity extends DemoBase implements OnChartValueSelectedL
                 }
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleHighlight: {
+            else if(item.getItemId()==R.id.actionToggleHighlight){
                 if(chart.getData() != null) {
                     chart.getData().setHighlightEnabled(!chart.getData().isHighlightEnabled());
                     chart.invalidate();
                 }
-                break;
+
             }
-            case R.id.actionTogglePinch: {
+            else if(item.getItemId()==R.id.actionTogglePinch){
                 if (chart.isPinchZoomEnabled())
                     chart.setPinchZoom(false);
                 else
                     chart.setPinchZoom(true);
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleAutoScaleMinMax: {
+            else if(item.getItemId()==R.id.actionToggleAutoScaleMinMax){
                 chart.setAutoScaleMinMaxEnabled(!chart.isAutoScaleMinMaxEnabled());
                 chart.notifyDataSetChanged();
-                break;
+
             }
-            case R.id.actionSave: {
+            else if(item.getItemId()==R.id.actionSave){
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     saveToGallery();
                 } else {
                     requestStoragePermission(chart);
                 }
-                break;
+
             }
-        }
+
         return true;
     }
 

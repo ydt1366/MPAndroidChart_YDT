@@ -229,14 +229,14 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.viewGithub: {
+
+             if(item.getItemId()==R.id.viewGithub){
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse("https://github.com/PhilJay/MPAndroidChart/blob/master/MPChartExample/src/com/xxmassdeveloper/mpchartexample/LineChartActivity2.java"));
                 startActivity(i);
-                break;
+
             }
-            case R.id.actionToggleValues: {
+            else if(item.getItemId()==R.id.actionToggleValues){
                 List<ILineDataSet> sets = chart.getData()
                         .getDataSets();
 
@@ -247,16 +247,16 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
                 }
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleHighlight: {
+            else if(item.getItemId()==R.id.actionToggleHighlight){
                 if (chart.getData() != null) {
                     chart.getData().setHighlightEnabled(!chart.getData().isHighlightEnabled());
                     chart.invalidate();
                 }
-                break;
+
             }
-            case R.id.actionToggleFilled: {
+            else if(item.getItemId()==R.id.actionToggleFilled){
 
                 List<ILineDataSet> sets = chart.getData()
                         .getDataSets();
@@ -270,9 +270,9 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
                         set.setDrawFilled(true);
                 }
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleCircles: {
+            else if(item.getItemId()==R.id.actionToggleCircles){
                 List<ILineDataSet> sets = chart.getData()
                         .getDataSets();
 
@@ -285,9 +285,9 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
                         set.setDrawCircles(true);
                 }
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleCubic: {
+            else if(item.getItemId()==R.id.actionToggleCubic){
                 List<ILineDataSet> sets = chart.getData()
                         .getDataSets();
 
@@ -299,9 +299,9 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
                             : LineDataSet.Mode.CUBIC_BEZIER);
                 }
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleStepped: {
+            else if(item.getItemId()==R.id.actionToggleStepped){
                 List<ILineDataSet> sets = chart.getData()
                         .getDataSets();
 
@@ -313,9 +313,9 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
                             : LineDataSet.Mode.STEPPED);
                 }
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleHorizontalCubic: {
+            else if(item.getItemId()==R.id.actionToggleHorizontalCubic){
                 List<ILineDataSet> sets = chart.getData()
                         .getDataSets();
 
@@ -327,43 +327,43 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
                             : LineDataSet.Mode.HORIZONTAL_BEZIER);
                 }
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionTogglePinch: {
+            else if(item.getItemId()==R.id.actionTogglePinch){
                 if (chart.isPinchZoomEnabled())
                     chart.setPinchZoom(false);
                 else
                     chart.setPinchZoom(true);
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleAutoScaleMinMax: {
+            else if(item.getItemId()==R.id.actionToggleAutoScaleMinMax){
                 chart.setAutoScaleMinMaxEnabled(!chart.isAutoScaleMinMaxEnabled());
                 chart.notifyDataSetChanged();
-                break;
+
             }
-            case R.id.animateX: {
+            else if(item.getItemId()==R.id.animateX){
                 chart.animateX(2000);
-                break;
+
             }
-            case R.id.animateY: {
+            else if(item.getItemId()==R.id.animateY){
                 chart.animateY(2000);
-                break;
+
             }
-            case R.id.animateXY: {
+            else if(item.getItemId()==R.id.animateXY){
                 chart.animateXY(2000, 2000);
-                break;
+
             }
-            case R.id.actionSave: {
+            else if(item.getItemId()==R.id.actionSave){
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     saveToGallery();
                 } else {
                     requestStoragePermission(chart);
                 }
-                break;
+
             }
-        }
+
         return true;
     }
 

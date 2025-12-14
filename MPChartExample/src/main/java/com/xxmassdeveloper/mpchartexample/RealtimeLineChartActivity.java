@@ -191,35 +191,34 @@ public class RealtimeLineChartActivity extends DemoBase implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.viewGithub: {
+        if(item.getItemId()==R.id.viewGithub){
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse("https://github.com/PhilJay/MPAndroidChart/blob/master/MPChartExample/src/com/xxmassdeveloper/mpchartexample/RealtimeLineChartActivity.java"));
                 startActivity(i);
-                break;
+
             }
-            case R.id.actionAdd: {
+            else if(item.getItemId()==R.id.actionAdd){
                 addEntry();
-                break;
+
             }
-            case R.id.actionClear: {
+            else if(item.getItemId()==R.id.actionClear){
                 chart.clearValues();
                 Toast.makeText(this, "Chart cleared!", Toast.LENGTH_SHORT).show();
-                break;
+
             }
-            case R.id.actionFeedMultiple: {
+            else if(item.getItemId()==R.id.actionFeedMultiple){
                 feedMultiple();
-                break;
+
             }
-            case R.id.actionSave: {
+            else if(item.getItemId()==R.id.actionSave){
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     saveToGallery();
                 } else {
                     requestStoragePermission(chart);
                 }
-                break;
+
             }
-        }
+
         return true;
     }
 

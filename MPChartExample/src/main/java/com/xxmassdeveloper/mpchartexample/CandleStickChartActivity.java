@@ -151,77 +151,77 @@ public class CandleStickChartActivity extends DemoBase implements OnSeekBarChang
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.viewGithub: {
+
+            if(item.getItemId()==R.id.viewGithub){
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse("https://github.com/PhilJay/MPAndroidChart/blob/master/MPChartExample/src/com/xxmassdeveloper/mpchartexample/CandleStickChartActivity.java"));
                 startActivity(i);
-                break;
+
             }
-            case R.id.actionToggleValues: {
+            if(item.getItemId()==R.id.actionToggleValues){
                 for (IDataSet set : chart.getData().getDataSets())
                     set.setDrawValues(!set.isDrawValuesEnabled());
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleIcons: {
+            if(item.getItemId()==R.id.actionToggleIcons){
                 for (IDataSet set : chart.getData().getDataSets())
                     set.setDrawIcons(!set.isDrawIconsEnabled());
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleHighlight: {
+            if(item.getItemId()==R.id.actionToggleHighlight){
                 if(chart.getData() != null) {
                     chart.getData().setHighlightEnabled(!chart.getData().isHighlightEnabled());
                     chart.invalidate();
                 }
-                break;
+
             }
-            case R.id.actionTogglePinch: {
+            if(item.getItemId()==R.id.actionTogglePinch){
                 if (chart.isPinchZoomEnabled())
                     chart.setPinchZoom(false);
                 else
                     chart.setPinchZoom(true);
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.actionToggleAutoScaleMinMax: {
+            if(item.getItemId()==R.id.actionToggleAutoScaleMinMax){
                 chart.setAutoScaleMinMaxEnabled(!chart.isAutoScaleMinMaxEnabled());
                 chart.notifyDataSetChanged();
-                break;
+
             }
-            case R.id.actionToggleMakeShadowSameColorAsCandle: {
+            if(item.getItemId()==R.id.actionToggleMakeShadowSameColorAsCandle){
                 for (ICandleDataSet set : chart.getData().getDataSets()) {
                     ((CandleDataSet) set).setShadowColorSameAsCandle(!set.getShadowColorSameAsCandle());
                 }
 
                 chart.invalidate();
-                break;
+
             }
-            case R.id.animateX: {
+            if(item.getItemId()==R.id.animateX){
                 chart.animateX(2000);
-                break;
+
             }
-            case R.id.animateY: {
+            if(item.getItemId()==R.id.animateY){
                 chart.animateY(2000);
-                break;
+
             }
-            case R.id.animateXY: {
+            if(item.getItemId()==R.id.animateXY){
                 chart.animateXY(2000, 2000);
-                break;
+
             }
-            case R.id.actionSave: {
+            if(item.getItemId()==R.id.actionSave){
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     saveToGallery();
                 } else {
                     requestStoragePermission(chart);
                 }
-                break;
+
             }
-        }
+
         return true;
     }
 

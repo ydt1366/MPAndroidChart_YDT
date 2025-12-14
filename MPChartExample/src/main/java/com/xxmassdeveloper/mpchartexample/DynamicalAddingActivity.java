@@ -190,47 +190,46 @@ public class DynamicalAddingActivity extends DemoBase implements OnChartValueSel
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.viewGithub: {
+         if(item.getItemId()==R.id.viewGithub){
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse("https://github.com/PhilJay/MPAndroidChart/blob/master/MPChartExample/src/com/xxmassdeveloper/mpchartexample/DynamicalAddingActivity.java"));
                 startActivity(i);
-                break;
+
             }
-            case R.id.actionAddEntry: {
+            else if(item.getItemId()==R.id.actionAddEntry){
                 addEntry();
                 Toast.makeText(this, "Entry added!", Toast.LENGTH_SHORT).show();
-                break;
+
             }
-            case R.id.actionRemoveEntry: {
+            else if(item.getItemId()==R.id.actionRemoveEntry){
                 removeLastEntry();
                 Toast.makeText(this, "Entry removed!", Toast.LENGTH_SHORT).show();
-                break;
+
             }
-            case R.id.actionAddDataSet: {
+            else if(item.getItemId()==R.id.actionAddDataSet){
                 addDataSet();
                 Toast.makeText(this, "DataSet added!", Toast.LENGTH_SHORT).show();
-                break;
+
             }
-            case R.id.actionRemoveDataSet: {
+            else if(item.getItemId()==R.id.actionRemoveDataSet){
                 removeDataSet();
                 Toast.makeText(this, "DataSet removed!", Toast.LENGTH_SHORT).show();
-                break;
+
             }
-            case R.id.actionClear: {
+            else if(item.getItemId()==R.id.actionClear){
                 chart.clear();
                 Toast.makeText(this, "Chart cleared!", Toast.LENGTH_SHORT).show();
-                break;
+
             }
-            case R.id.actionSave: {
+            else if(item.getItemId()==R.id.actionSave){
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     saveToGallery();
                 } else {
                     requestStoragePermission(chart);
                 }
-                break;
+
             }
-        }
+
 
         return true;
     }
